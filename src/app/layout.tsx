@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 
 const siteUrl = "https://www.fishandchipsredcar.co.uk";
-const googleAnalyticsId = "G-XXXXXXXXXX";
+const googleAnalyticsId = "G-V9XLPK1XH";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -66,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const hasGoogleAnalyticsId =
-    googleAnalyticsId && googleAnalyticsId !== "G-XXXXXXXXXX";
+    googleAnalyticsId && googleAnalyticsId !== "G-V9XLPK1XH";
 
   return (
     <html lang="en-GB">
