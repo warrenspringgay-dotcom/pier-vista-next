@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 
 const siteUrl = "https://www.fishandchipsredcar.co.uk";
-const googleAnalyticsId = "G-V9XLPK1XH";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -67,23 +65,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB">
-      <body>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
-          strategy="afterInteractive"
+      <head>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-GV9XLPK1XH"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
 
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${googleAnalyticsId}');
-          `}
-        </Script>
-
-        {children}
-      </body>
+              gtag('config', 'G-GV9XLPK1XH');
+            `,
+          }}
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

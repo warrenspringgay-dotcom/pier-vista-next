@@ -162,6 +162,8 @@ export default function Home() {
     <main className="min-h-screen bg-[#07090b] text-white">
       <Header />
 
+
+
       <HeroSection />
       <IntroSection />
       <FeatureStrip />
@@ -174,6 +176,8 @@ export default function Home() {
     </main>
   );
 }
+
+
 
 function HeroSection() {
   return (
