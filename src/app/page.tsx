@@ -28,10 +28,12 @@ const MAJUBA_MAP_QUERY = encodeURIComponent("Majuba Road Car Park Redcar TS10 5B
 const MAJUBA_MAP_URL = `https://maps.google.com/maps?q=${MAJUBA_MAP_QUERY}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
 const MAJUBA_DIRECTIONS_URL = `https://www.google.com/maps/search/?api=1&query=${MAJUBA_MAP_QUERY}`;
 
+const FACEBOOK_URL = "https://www.facebook.com/piervista";
+
 const heroStats = [
-  "Family run since 2013",
-  "5★ food hygiene rating",
-  "Seating inside for 25",
+  "Family Run Since 2013",
+  "5★ Food Hygiene Rating",
+  "Seating Inside for 25",
 ];
 
 const menuSections: { title: string; intro: string; items: MenuItem[] }[] = [
@@ -164,6 +166,7 @@ export default function Home() {
       <IntroSection />
       <FeatureStrip />
       <MenuSection />
+      <SocialSection />
       <FreshlyCookedSection />
       <VisitSection />
       <PlanningSection />
@@ -206,6 +209,15 @@ function HeroSection() {
               className="rounded-2xl border border-white/20 px-6 py-3 font-black text-white transition hover:bg-white/10"
             >
               Plan Your Visit
+            </a>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-2xl border border-amber-400/30 bg-amber-400/10 px-6 py-3 font-black text-amber-200 transition hover:bg-amber-400/20"
+            >
+              <FacebookIcon className="h-4 w-4" />
+              Follow Us
             </a>
           </div>
 
@@ -379,6 +391,60 @@ function MenuSection() {
           Prices and availability can vary seasonally. Please check in-store for
           the latest menu and opening information.
         </p>
+      </div>
+    </section>
+  );
+}
+
+
+function SocialSection() {
+  return (
+    <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
+      <div className="overflow-hidden rounded-[2rem] border border-amber-400/20 bg-gradient-to-br from-amber-400/10 via-zinc-950 to-black shadow-2xl">
+        <div className="grid gap-8 p-8 md:p-10 lg:grid-cols-[1fr_0.75fr] lg:items-center">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+              Latest Updates
+            </p>
+
+            <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
+              Follow Pier Vista on Facebook
+            </h2>
+
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
+              For seasonal opening times, updates, photos and local notices,
+              follow Pier Vista on Facebook. It is the easiest place to check
+              what is happening before you travel to Redcar seafront.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-black/30 p-6">
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-400 text-black">
+                <FacebookIcon className="h-7 w-7" />
+              </div>
+
+              <div>
+                <h3 className="font-serif text-2xl font-black">
+                  Pier Vista Fish & Chips
+                </h3>
+                <p className="mt-1 text-sm text-zinc-400">
+                  Redcar seafront updates and opening times.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
+            >
+              Visit Facebook Page
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -575,9 +641,45 @@ function PlanningSection() {
 
 function Footer() {
   return (
-    <footer className="border-t border-white/10 px-5 py-10 text-center text-sm text-zinc-500">
-      <p>© {new Date().getFullYear()} Pier Vista Fish & Chips. Redcar Seafront.</p>
-      <p className="mt-2">Traditional fish and chips, seating inside and takeaway available.</p>
+    <footer className="border-t border-white/10 bg-black px-5 py-10 text-sm text-zinc-400">
+      <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
+        <div>
+          <h2 className="font-serif text-3xl font-black text-white">
+            Pier Vista
+          </h2>
+          <p className="mt-3 max-w-md leading-7">
+            Traditional fish and chips on Redcar seafront. Family run since
+            2013, with seating inside and takeaway available.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-bold text-white">Visit</h3>
+          <div className="mt-3 space-y-2">
+            <p>Redcar Seafront</p>
+            <p>TS10 3AA</p>
+            <p>Opposite Redcar Beacon</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-bold text-white">Follow</h3>
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-2 text-amber-300 hover:text-amber-200"
+          >
+            <FacebookIcon className="h-4 w-4" />
+            Facebook
+          </a>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-6 text-xs text-zinc-600">
+        © {new Date().getFullYear()} Pier Vista Fish & Chips. All rights
+        reserved.
+      </div>
     </footer>
   );
 }
@@ -597,6 +699,14 @@ function Header() {
           <a className="hover:text-white" href="#visit">
             Visit
           </a>
+          <a
+            className="inline-flex items-center gap-2 hover:text-white"
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Facebook
+          </a>
         </nav>
 
         <a
@@ -615,6 +725,20 @@ function Badge({ children }: { children: React.ReactNode }) {
     <div className="rounded-2xl border border-amber-400/20 bg-amber-400/10 px-5 py-3">
       <p className="text-sm font-black text-amber-200">{children}</p>
     </div>
+  );
+}
+
+
+function FacebookIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06Z" />
+    </svg>
   );
 }
 
