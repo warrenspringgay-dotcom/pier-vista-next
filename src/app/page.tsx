@@ -6,8 +6,8 @@ import {
   Clock,
   Dog,
   ExternalLink,
+  Mail,
   MapPin,
-  Phone,
   ShieldCheck,
   Star,
   Waves,
@@ -29,6 +29,10 @@ const MAJUBA_MAP_URL = `https://maps.google.com/maps?q=${MAJUBA_MAP_QUERY}&t=&z=
 const MAJUBA_DIRECTIONS_URL = `https://www.google.com/maps/search/?api=1&query=${MAJUBA_MAP_QUERY}`;
 
 const FACEBOOK_URL = "https://www.facebook.com/piervista";
+const BUSINESS_EMAIL = "info@fishandchipsredcar.co.uk";
+const BUSINESS_ADDRESS = "Redcar Seafront, Redcar TS10 3AA";
+const OPENING_TIMES_NOTE =
+  "Opening times vary seasonally — please check Facebook for the latest updates before travelling.";
 
 const heroStats = [
   "Family Run Since 2013",
@@ -157,9 +161,146 @@ const attractions = [
   },
 ];
 
+const faqs = [
+  {
+    question: "Where is Pier Vista Fish & Chips?",
+    answer:
+      "Pier Vista Fish & Chips is on Redcar seafront, directly opposite the Redcar Beacon, with Majuba Road Car Park nearby.",
+  },
+  {
+    question: "Is there seating inside?",
+    answer:
+      "Yes. Pier Vista has seating inside for around 25 customers, with takeaway also available.",
+  },
+  {
+    question: "Are dogs welcome?",
+    answer:
+      "Yes. Pier Vista is dog friendly, making it a useful stop for visitors walking along Redcar seafront.",
+  },
+  {
+    question: "Do opening times change?",
+    answer:
+      "Yes. Pier Vista is a seasonal seafront business, so opening times can vary. Please check the Facebook page for the latest updates before travelling.",
+  },
+];
+
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.fishandchipsredcar.co.uk/#restaurant",
+      name: BUSINESS_NAME,
+      url: "https://www.fishandchipsredcar.co.uk",
+      image: [
+        "https://www.fishandchipsredcar.co.uk/images/fish-boxes.jpg",
+        "https://www.fishandchipsredcar.co.uk/images/shop-front.jpg",
+        "https://www.fishandchipsredcar.co.uk/images/staff-frying.jpg",
+      ],
+      email: BUSINESS_EMAIL,
+      priceRange: "£",
+      servesCuisine: ["Fish and chips", "British", "Seafood"],
+      acceptsReservations: false,
+      foundingDate: "2013",
+      slogan: "Traditional fish and chips on Redcar seafront",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Redcar Seafront",
+        addressLocality: "Redcar",
+        postalCode: "TS10 3AA",
+        addressCountry: "GB",
+      },
+      areaServed: [
+        "Redcar",
+        "Redcar Seafront",
+        "Majuba Beach",
+        "Redcar Beacon",
+      ],
+      sameAs: [FACEBOOK_URL],
+      hasMenu: "https://www.fishandchipsredcar.co.uk/#menu",
+      amenityFeature: [
+        {
+          "@type": "LocationFeatureSpecification",
+          name: "Seating inside",
+          value: true,
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          name: "Disabled access",
+          value: true,
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          name: "Dog friendly",
+          value: true,
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          name: "High chairs available",
+          value: true,
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          name: "Takeaway available",
+          value: true,
+        },
+      ],
+      description:
+        "Traditional family-run fish and chips on Redcar seafront, directly opposite the Redcar Beacon. Established in 2013 with seating inside, disabled access, dog friendly service and a 5-star food hygiene rating.",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.fishandchipsredcar.co.uk/#website",
+      url: "https://www.fishandchipsredcar.co.uk",
+      name: BUSINESS_NAME,
+      publisher: {
+        "@id": "https://www.fishandchipsredcar.co.uk/#restaurant",
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.fishandchipsredcar.co.uk/#webpage",
+      url: "https://www.fishandchipsredcar.co.uk",
+      name: "Pier Vista Fish & Chips | Redcar Seafront",
+      isPartOf: {
+        "@id": "https://www.fishandchipsredcar.co.uk/#website",
+      },
+      about: {
+        "@id": "https://www.fishandchipsredcar.co.uk/#restaurant",
+      },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: "https://www.fishandchipsredcar.co.uk/images/fish-boxes.jpg",
+      },
+      description:
+        "Traditional fish and chips on Redcar seafront, directly opposite the Redcar Beacon.",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.fishandchipsredcar.co.uk/#faq",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#07090b] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+
       <Header />
 
 
@@ -169,9 +310,11 @@ export default function Home() {
       <FeatureStrip />
       <MenuSection />
       <SocialSection />
+      <OpeningTimesSection />
       <FreshlyCookedSection />
       <VisitSection />
       <PlanningSection />
+      <FaqSection />
       <Footer />
     </main>
   );
@@ -454,6 +597,89 @@ function SocialSection() {
   );
 }
 
+
+function OpeningTimesSection() {
+  return (
+    <section id="opening-times" className="mx-auto max-w-7xl px-5 py-16 md:px-8">
+      <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="rounded-[2rem] border border-amber-400/20 bg-zinc-950 p-8 shadow-2xl">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+            Opening Times
+          </p>
+
+          <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
+            Planning a visit to Redcar seafront?
+          </h2>
+
+          <p className="mt-5 text-lg leading-8 text-zinc-300">
+            {OPENING_TIMES_NOTE}
+          </p>
+
+          <div className="mt-7 rounded-3xl border border-white/10 bg-white/[0.04] p-5">
+            <h3 className="font-bold text-white">Before you travel</h3>
+            <p className="mt-2 leading-7 text-zinc-400">
+              Pier Vista is a seasonal seafront business, so opening times can
+              change with weather, school holidays and visitor demand. For the
+              most reliable update, check our Facebook page.
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
+              >
+                Check Facebook Updates
+                <ExternalLink className="h-4 w-4" />
+              </a>
+
+              <a
+                href={`mailto:${BUSINESS_EMAIL}`}
+                className="inline-flex items-center gap-2 rounded-2xl border border-white/15 px-6 py-3 font-black text-white transition hover:bg-white/10"
+              >
+                Email Us
+                <Mail className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-2xl">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+            Local Search
+          </p>
+
+          <h2 className="mt-4 font-serif text-4xl font-black leading-tight">
+            Fish and chips near Redcar Beacon
+          </h2>
+
+          <div className="mt-5 space-y-4 leading-8 text-zinc-300">
+            <p>
+              If you are looking for fish and chips in Redcar, Pier Vista is
+              directly on the seafront opposite the Redcar Beacon, close to the
+              promenade, beach, arcades and family attractions.
+            </p>
+
+            <p>
+              We serve traditional takeaway fish and chips on Redcar seafront,
+              with seating inside for around 25 customers. Families, visitors,
+              dog walkers and locals can stop in while enjoying the beach,
+              Majuba area and Redcar town centre.
+            </p>
+
+            <p>
+              Popular searches we naturally serve include fish and chips Redcar,
+              fish and chips near Redcar Beacon, places to eat on Redcar
+              seafront and family friendly takeaway food near Majuba Beach.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FreshlyCookedSection() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 md:px-8">
@@ -534,8 +760,13 @@ function VisitSection() {
               </p>
 
               <p className="flex gap-3">
-                <Phone className="mt-1 h-5 w-5 shrink-0 text-amber-300" />
-                Add phone number here
+                <Mail className="mt-1 h-5 w-5 shrink-0 text-amber-300" />
+                <a
+                  href={`mailto:${BUSINESS_EMAIL}`}
+                  className="hover:text-amber-200"
+                >
+                  {BUSINESS_EMAIL}
+                </a>
               </p>
             </div>
 
@@ -643,6 +874,38 @@ function PlanningSection() {
   );
 }
 
+
+function FaqSection() {
+  return (
+    <section id="faq" className="mx-auto max-w-7xl px-5 py-20 md:px-8">
+      <div className="mx-auto mb-10 max-w-3xl text-center">
+        <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+          Visitor Questions
+        </p>
+        <h2 className="mt-3 font-serif text-4xl font-black md:text-5xl">
+          Useful things to know before visiting
+        </h2>
+        <p className="mt-4 text-zinc-300">
+          Quick answers for visitors looking for fish and chips on Redcar
+          seafront, parking near Majuba and food close to the Redcar Beacon.
+        </p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        {faqs.map((faq) => (
+          <div
+            key={faq.question}
+            className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+          >
+            <h3 className="font-serif text-2xl font-black">{faq.question}</h3>
+            <p className="mt-3 leading-7 text-zinc-300">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black px-5 py-10 text-sm text-zinc-400">
@@ -667,16 +930,26 @@ function Footer() {
         </div>
 
         <div>
-          <h3 className="font-bold text-white">Follow</h3>
-          <a
-            href={FACEBOOK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 inline-flex items-center gap-2 text-amber-300 hover:text-amber-200"
-          >
-            <FacebookIcon className="h-4 w-4" />
-            Facebook
-          </a>
+          <h3 className="font-bold text-white">Contact</h3>
+          <div className="mt-3 space-y-3">
+            <a
+              href={`mailto:${BUSINESS_EMAIL}`}
+              className="inline-flex items-center gap-2 text-amber-300 hover:text-amber-200"
+            >
+              <Mail className="h-4 w-4" />
+              {BUSINESS_EMAIL}
+            </a>
+
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-amber-300 hover:text-amber-200"
+            >
+              <FacebookIcon className="h-4 w-4" />
+              Facebook
+            </a>
+          </div>
         </div>
       </div>
 
@@ -702,6 +975,9 @@ function Header() {
           </a>
           <a className="hover:text-white" href="#visit">
             Visit
+          </a>
+          <a className="hover:text-white" href="#faq">
+            FAQ
           </a>
           <a
             className="inline-flex items-center gap-2 hover:text-white"
