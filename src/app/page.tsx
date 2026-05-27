@@ -30,6 +30,8 @@ const MAJUBA_DIRECTIONS_URL = `https://www.google.com/maps/search/?api=1&query=$
 
 const FACEBOOK_URL = "https://www.facebook.com/piervista";
 const BUSINESS_EMAIL = "info@fishandchipsredcar.co.uk";
+const MENU_PAGE_URL = "/menu";
+const SEAFRONT_GUIDE_URL = "/fish-and-chips-redcar-seafront";
 const BUSINESS_ADDRESS = "Redcar Seafront, Redcar TS10 3AA";
 const OPENING_TIMES_NOTE =
   "Opening times vary seasonally — please check Facebook for the latest updates before travelling.";
@@ -218,7 +220,7 @@ const structuredData = {
         "Redcar Beacon",
       ],
       sameAs: [FACEBOOK_URL],
-      hasMenu: "https://www.fishandchipsredcar.co.uk/#menu",
+      hasMenu: "https://www.fishandchipsredcar.co.uk/menu",
       amenityFeature: [
         {
           "@type": "LocationFeatureSpecification",
@@ -346,7 +348,7 @@ function HeroSection() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#menu"
+              href={MENU_PAGE_URL}
               className="rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
             >
               View Menu
@@ -356,6 +358,12 @@ function HeroSection() {
               className="rounded-2xl border border-white/20 px-6 py-3 font-black text-white transition hover:bg-white/10"
             >
               Plan Your Visit
+            </a>
+            <a
+              href={SEAFRONT_GUIDE_URL}
+              className="rounded-2xl border border-amber-400/30 bg-amber-400/10 px-6 py-3 font-black text-amber-200 transition hover:bg-amber-400/20"
+            >
+              Seafront Guide
             </a>
             <a
               href={FACEBOOK_URL}
@@ -534,7 +542,16 @@ function MenuSection() {
           ))}
         </div>
 
-        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-6 text-zinc-500">
+        <div className="mt-8 text-center">
+          <a
+            href={MENU_PAGE_URL}
+            className="inline-flex rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
+          >
+            View Full Menu Page
+          </a>
+        </div>
+
+        <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-6 text-zinc-500">
           Prices and availability can vary seasonally. Please check in-store for
           the latest menu and opening information.
         </p>
@@ -837,15 +854,24 @@ function PlanningSection() {
             </p>
           </div>
 
-          <a
-            href={MAJUBA_DIRECTIONS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-7 inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
-          >
-            Open Majuba Parking
-            <ExternalLink className="h-4 w-4" />
-          </a>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a
+              href={MAJUBA_DIRECTIONS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
+            >
+              Open Majuba Parking
+              <ExternalLink className="h-4 w-4" />
+            </a>
+
+            <a
+              href={SEAFRONT_GUIDE_URL}
+              className="inline-flex items-center gap-2 rounded-2xl border border-white/15 px-6 py-3 font-black text-white transition hover:bg-white/10"
+            >
+              Read Redcar Seafront Guide
+            </a>
+          </div>
         </div>
 
         <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl">
@@ -888,6 +914,11 @@ function FaqSection() {
         <p className="mt-4 text-zinc-300">
           Quick answers for visitors looking for fish and chips on Redcar
           seafront, parking near Majuba and food close to the Redcar Beacon.
+          For a fuller visitor guide, see our{" "}
+          <a href={SEAFRONT_GUIDE_URL} className="text-amber-300 hover:text-amber-200">
+            Redcar seafront fish and chips guide
+          </a>
+          .
         </p>
       </div>
 
@@ -926,6 +957,12 @@ function Footer() {
             <p>Redcar Seafront</p>
             <p>TS10 3AA</p>
             <p>Opposite Redcar Beacon</p>
+            <a href={MENU_PAGE_URL} className="block text-amber-300 hover:text-amber-200">
+              View Menu
+            </a>
+            <a href={SEAFRONT_GUIDE_URL} className="block text-amber-300 hover:text-amber-200">
+              Redcar Seafront Guide
+            </a>
           </div>
         </div>
 
@@ -970,8 +1007,11 @@ function Header() {
         </a>
 
         <nav className="hidden items-center gap-7 text-sm font-bold text-zinc-300 md:flex">
-          <a className="hover:text-white" href="#menu">
+          <a className="hover:text-white" href={MENU_PAGE_URL}>
             Menu
+          </a>
+          <a className="hover:text-white" href={SEAFRONT_GUIDE_URL}>
+            Seafront Guide
           </a>
           <a className="hover:text-white" href="#visit">
             Visit
@@ -990,7 +1030,7 @@ function Header() {
         </nav>
 
         <a
-          href="#menu"
+          href={MENU_PAGE_URL}
           className="rounded-xl bg-amber-400 px-4 py-2 text-sm font-black text-black hover:bg-amber-300"
         >
           View Menu
