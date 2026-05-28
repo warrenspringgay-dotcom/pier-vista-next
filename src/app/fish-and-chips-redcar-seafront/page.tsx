@@ -191,6 +191,30 @@ const structuredData = {
   ],
 };
 
+
+const seafrontPhotos = [
+  {
+    src: "/images/redcar-seafront-promenade-view.jpg",
+    alt: "View along Redcar seafront promenade from near Redcar Beacon",
+    title: "Promenade views",
+  },
+  {
+    src: "/images/redcar-beach-promenade-view.jpg",
+    alt: "Redcar beach and promenade looking along the seafront",
+    title: "Beach walks",
+  },
+  {
+    src: "/images/majuba-beach-redcar-beacon.jpg",
+    alt: "Majuba Beach and Redcar Beacon on a sunny day",
+    title: "Majuba Beach",
+  },
+  {
+    src: "/images/redcar-beacon-from-seafront.jpg",
+    alt: "Redcar Beacon viewed from the seafront road",
+    title: "Redcar Beacon",
+  },
+];
+
 const quickHighlights = [
   {
     icon: Waves,
@@ -344,8 +368,8 @@ export default function FishAndChipsRedcarSeafrontPage() {
             <div className="absolute -inset-4 rounded-[2rem] bg-amber-400/10 blur-3xl" />
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-3 shadow-2xl">
               <Image
-                src="/images/fish-boxes.jpg"
-                alt="Pier Vista fish and chips on Redcar seafront"
+                src="/images/redcar-seafront-promenade-view.jpg"
+                alt="Redcar seafront promenade view from near Redcar Beacon"
                 width={1200}
                 height={900}
                 className="aspect-[4/3] rounded-[1.5rem] object-cover"
@@ -366,6 +390,43 @@ export default function FishAndChipsRedcarSeafrontPage() {
               <Icon className="mb-4 h-9 w-9 text-amber-300" />
               <h2 className="font-bold">{title}</h2>
               <p className="mt-2 text-sm leading-6 text-zinc-400">{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+      <section className="mx-auto max-w-7xl px-5 pb-20 md:px-8">
+        <div className="mb-8 max-w-3xl">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+            Seafront Views
+          </p>
+          <h2 className="mt-3 font-serif text-4xl font-black md:text-5xl">
+            See Redcar before you visit
+          </h2>
+          <p className="mt-4 leading-7 text-zinc-300">
+            A few real views from around the seafront, beach and Redcar Beacon.
+            These help visitors understand exactly where Pier Vista sits and
+            what is nearby.
+          </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {seafrontPhotos.map((photo) => (
+            <div
+              key={photo.src}
+              className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-xl"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={900}
+                height={700}
+                className="aspect-[4/3] object-cover transition duration-500 group-hover:scale-105"
+              />
+              <div className="border-t border-white/10 p-4">
+                <p className="font-bold text-white">{photo.title}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -408,7 +469,7 @@ export default function FishAndChipsRedcarSeafrontPage() {
           <div className="grid gap-4">
             <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl">
               <Image
-                src="/images/shop-front.jpg"
+                src="/images/pier-vista-shop-front-seafront.jpg"
                 alt="Pier Vista Fish and Chips shop front on Redcar seafront"
                 width={1200}
                 height={800}
@@ -627,12 +688,12 @@ export default function FishAndChipsRedcarSeafrontPage() {
 
           <div className="grid grid-cols-2 gap-3">
             <ImageCard
-              src="/images/fish-fryer-closeup.jpg"
-              alt="Fresh battered fish being cooked at Pier Vista"
+              src="/images/redcar-beacon-closeup.jpg"
+              alt="Close-up view of Redcar Beacon on Redcar seafront"
             />
             <ImageCard
-              src="/images/chips-serving.jpg"
-              alt="Fresh chips being served at Pier Vista Redcar"
+              src="/images/family-fish-and-chips-redcar-1.png"
+              alt="Family enjoying fish and chips near Redcar seafront"
             />
             <ImageCard
               src="/images/scraps-box.jpg"
