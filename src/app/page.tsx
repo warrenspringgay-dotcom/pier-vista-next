@@ -1,4 +1,6 @@
 import Image from "next/image";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import {
   Accessibility,
   Baby,
@@ -303,7 +305,7 @@ export default function Home() {
         }}
       />
 
-      <Header />
+      <SiteHeader />
 
 
 
@@ -317,7 +319,7 @@ export default function Home() {
       <VisitSection />
       <PlanningSection />
       <FaqSection />
-      <Footer />
+      <SiteFooter />
     </main>
   );
 }

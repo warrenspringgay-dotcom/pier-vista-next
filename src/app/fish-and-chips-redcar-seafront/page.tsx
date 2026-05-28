@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import Image from "next/image";
 import {
   Accessibility,
@@ -232,6 +234,8 @@ export default function FishAndChipsRedcarSeafrontPage() {
           __html: JSON.stringify(structuredData),
         }}
       />
+
+      <SiteHeader />
 
       <section className="relative isolate overflow-hidden border-b border-amber-400/20">
         <ScalePattern />
@@ -525,6 +529,8 @@ export default function FishAndChipsRedcarSeafrontPage() {
           ))}
         </div>
       </section>
+
+      <SiteFooter />
     </main>
   );
 }
