@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ExternalLink, Mail, Star } from "lucide-react";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const siteUrl = "https://www.fishandchipsredcar.co.uk";
 const pageUrl = `${siteUrl}/menu`;
 const facebookUrl = "https://www.facebook.com/piervista";
 const email = "info@fishandchipsredcar.co.uk";
 
-type MenuItem = { name: string; price: string; note?: string };
+type MenuItem = {
+  name: string;
+  price: string;
+  note?: string;
+};
 
 const menuSections: { title: string; intro: string; items: MenuItem[] }[] = [
   {
@@ -77,7 +83,9 @@ export const metadata: Metadata = {
   title: "Pier Vista Menu | Fish and Chips Redcar Seafront Prices",
   description:
     "View the Pier Vista Fish & Chips menu. Traditional fish and chips, chip-shop classics, kids meals, sides, sauces and pensioners specials on Redcar seafront.",
-  alternates: { canonical: pageUrl },
+  alternates: {
+    canonical: pageUrl,
+  },
   openGraph: {
     title: "Pier Vista Fish & Chips Menu | Redcar Seafront",
     description:
@@ -125,8 +133,12 @@ export default function MenuPage() {
     <main className="min-h-screen bg-[#07090b] text-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(menuSchema),
+        }}
       />
+
+      <SiteHeader />
 
       <section className="relative isolate overflow-hidden border-b border-amber-400/20">
         <ScalePattern />
@@ -134,13 +146,6 @@ export default function MenuPage() {
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:grid-cols-[1fr_.9fr] md:px-8 lg:py-24">
           <div>
-            <a
-              href="/"
-              className="mb-6 inline-flex rounded-full border border-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-zinc-300 transition hover:border-amber-300/50 hover:text-white"
-            >
-              ← Back to Pier Vista
-            </a>
-
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.26em] text-amber-200">
               <Star className="h-4 w-4" />
               Redcar Seafront Menu
@@ -200,17 +205,30 @@ export default function MenuPage() {
               <h2 className="rounded-2xl bg-amber-400/10 px-4 py-3 text-center text-sm font-black uppercase tracking-[0.2em] text-amber-200">
                 {section.title}
               </h2>
+
               <p className="mx-auto mt-3 max-w-[16rem] text-center text-xs leading-5 text-zinc-500">
                 {section.intro}
               </p>
+
               <div className="mt-5 space-y-3">
                 {section.items.map((item) => (
-                  <div key={item.name} className="border-b border-white/10 pb-3 last:border-b-0">
+                  <div
+                    key={item.name}
+                    className="border-b border-white/10 pb-3 last:border-b-0"
+                  >
                     <div className="flex items-baseline justify-between gap-4">
-                      <span className="text-sm font-medium text-zinc-100">{item.name}</span>
-                      <span className="shrink-0 font-black text-white">{item.price}</span>
+                      <span className="text-sm font-medium text-zinc-100">
+                        {item.name}
+                      </span>
+                      <span className="shrink-0 font-black text-white">
+                        {item.price}
+                      </span>
                     </div>
-                    {item.note ? <p className="mt-1 max-w-[18rem] text-xs leading-5 text-zinc-400">{item.note}</p> : null}
+                    {item.note ? (
+                      <p className="mt-1 max-w-[18rem] text-xs leading-5 text-zinc-400">
+                        {item.note}
+                      </p>
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -219,21 +237,36 @@ export default function MenuPage() {
         </div>
 
         <div className="mt-12 rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 text-center">
-          <h2 className="font-serif text-3xl font-black">Opening times vary seasonally</h2>
+          <h2 className="font-serif text-3xl font-black">
+            Opening times vary seasonally
+          </h2>
           <p className="mx-auto mt-4 max-w-2xl leading-7 text-zinc-300">
             Pier Vista is a seasonal seafront business. Please check Facebook
             for the latest opening updates before travelling.
           </p>
+
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black transition hover:bg-amber-300">
-              Visit Facebook <ExternalLink className="h-4 w-4" />
+            <a
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black transition hover:bg-amber-300"
+            >
+              Visit Facebook
+              <ExternalLink className="h-4 w-4" />
             </a>
-            <a href={`mailto:${email}`} className="inline-flex items-center gap-2 rounded-2xl border border-white/20 px-6 py-3 font-black text-white transition hover:bg-white/10">
-              Email Us <Mail className="h-4 w-4" />
+            <a
+              href={`mailto:${email}`}
+              className="inline-flex items-center gap-2 rounded-2xl border border-white/20 px-6 py-3 font-black text-white transition hover:bg-white/10"
+            >
+              Email Us
+              <Mail className="h-4 w-4" />
             </a>
           </div>
         </div>
       </section>
+
+      <SiteFooter />
     </main>
   );
 }
