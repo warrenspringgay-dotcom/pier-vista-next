@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { Mail, MessageCircle } from "lucide-react";
+import { ExternalLink, Mail, MessageCircle, Star } from "lucide-react";
 
 const FACEBOOK_URL = "https://www.facebook.com/piervista";
 const BUSINESS_EMAIL = "info@fishandchipsredcar.co.uk";
+const GOOGLE_REVIEW_URL = "https://g.page/r/CUMiWx0cA4MWEBM/review";
 
 function FacebookIcon({ className = "" }: { className?: string }) {
   return (
@@ -95,6 +96,35 @@ export default function SiteFooter() {
               Facebook
             </a>
           </div>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-8 max-w-7xl rounded-[2rem] border border-amber-400/20 bg-white/[0.04] p-6">
+        <div className="grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <p className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.28em] text-amber-300">
+              <Star className="h-4 w-4" />
+              Enjoyed your visit?
+            </p>
+            <h3 className="mt-2 font-serif text-2xl font-black text-white">
+              Leave Pier Vista a Google review
+            </h3>
+            <p className="mt-2 max-w-2xl leading-7">
+              Reviews help visitors find us when searching for fish and chips on
+              Redcar seafront. If you enjoyed your food or visit, a quick review
+              makes a real difference.
+            </p>
+          </div>
+
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black hover:bg-amber-300"
+          >
+            Leave a Google Review
+            <ExternalLink className="h-4 w-4" />
+          </a>
         </div>
       </div>
 

@@ -32,6 +32,7 @@ const MAJUBA_MAP_URL = `https://maps.google.com/maps?q=${MAJUBA_MAP_QUERY}&t=&z=
 const MAJUBA_DIRECTIONS_URL = `https://www.google.com/maps/search/?api=1&query=${MAJUBA_MAP_QUERY}`;
 
 const FACEBOOK_URL = "https://www.facebook.com/piervista";
+const GOOGLE_REVIEW_URL = "https://g.page/r/CUMiWx0cA4MWEBM/review";
 const BUSINESS_EMAIL = "info@fishandchipsredcar.co.uk";
 const MENU_PAGE_URL = "/menu";
 const SEAFRONT_GUIDE_URL = "/fish-and-chips-redcar-seafront";
@@ -327,6 +328,7 @@ export default function Home() {
       <FreshlyCookedSection />
       <VisitSection />
       <PlanningSection />
+      <ReviewSection />
       <ContactEnquiriesSection />
       <FaqSection />
       <SiteFooter />
@@ -967,6 +969,82 @@ function PlanningSection() {
 }
 
 
+
+
+function ReviewSection() {
+  return (
+    <section id="reviews" className="mx-auto max-w-7xl px-5 py-20 md:px-8">
+      <div className="overflow-hidden rounded-[2rem] border border-amber-400/25 bg-gradient-to-br from-amber-400/10 via-zinc-950 to-black shadow-2xl">
+        <div className="grid gap-0 lg:grid-cols-[1fr_0.85fr]">
+          <div className="p-8 md:p-12">
+            <p className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+              <Star className="h-4 w-4" />
+              Google Reviews
+            </p>
+
+            <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
+              Enjoyed your visit to Pier Vista?
+            </h2>
+
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
+              Google reviews help other visitors find us when searching for fish
+              and chips on Redcar seafront, places to eat near Redcar Beacon or
+              family-friendly food near Majuba Beach. If you enjoyed your food,
+              service or visit, leaving a review makes a real difference.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={GOOGLE_REVIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
+              >
+                Leave a Google Review
+                <ExternalLink className="h-5 w-5" />
+              </a>
+
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-2xl border border-white/15 px-6 py-3 font-black text-white transition hover:bg-white/10"
+              >
+                Follow on Facebook
+              </a>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 bg-white/[0.04] p-8 md:p-12 lg:border-l lg:border-t-0">
+            <h3 className="font-serif text-3xl font-black">
+              What to mention
+            </h3>
+
+            <div className="mt-6 grid gap-4">
+              {[
+                "Food quality and portion size",
+                "Friendly service",
+                "Seafront location opposite Redcar Beacon",
+                "Family-friendly seating or takeaway experience",
+                "Anything that helped your visit",
+              ].map((item, index) => (
+                <div
+                  key={item}
+                  className="flex gap-4 rounded-3xl border border-white/10 bg-black/20 p-4"
+                >
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-amber-400 font-black text-black">
+                    {index + 1}
+                  </div>
+                  <p className="self-center font-bold text-zinc-100">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function ContactEnquiriesSection() {
   return (
