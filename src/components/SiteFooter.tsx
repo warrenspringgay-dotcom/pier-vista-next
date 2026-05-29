@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 
 const FACEBOOK_URL = "https://www.facebook.com/piervista";
 const BUSINESS_EMAIL = "info@fishandchipsredcar.co.uk";
@@ -20,7 +20,7 @@ function FacebookIcon({ className = "" }: { className?: string }) {
 export default function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-black px-5 py-10 text-sm text-zinc-400">
-      <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
+      <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1.1fr_0.8fr_1.1fr]">
         <div>
           <h2 className="font-serif text-3xl font-black text-white">
             Pier Vista
@@ -50,8 +50,33 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <h3 className="font-bold text-white">Contact</h3>
-          <div className="mt-3 space-y-3">
+          <h3 className="font-bold text-white">Group visits & enquiries</h3>
+          <p className="mt-3 leading-7">
+            For school trips, nursing home visits, group enquiries, opening
+            questions or accessibility queries, message us on Facebook or email.
+          </p>
+
+          <div className="mt-4 flex flex-wrap gap-3">
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-4 py-3 font-black text-black hover:bg-amber-300"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Message on Facebook
+            </a>
+
+            <a
+              href={`mailto:${BUSINESS_EMAIL}?subject=Pier%20Vista%20group%20visit%20enquiry`}
+              className="inline-flex items-center gap-2 rounded-2xl border border-white/15 px-4 py-3 font-black text-white hover:bg-white/10"
+            >
+              <Mail className="h-4 w-4" />
+              Email Us
+            </a>
+          </div>
+
+          <div className="mt-4 space-y-2">
             <a
               href={`mailto:${BUSINESS_EMAIL}`}
               className="inline-flex items-center gap-2 text-amber-300 hover:text-amber-200"
@@ -64,7 +89,7 @@ export default function SiteFooter() {
               href={FACEBOOK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-amber-300 hover:text-amber-200"
+              className="flex items-center gap-2 text-amber-300 hover:text-amber-200"
             >
               <FacebookIcon className="h-4 w-4" />
               Facebook

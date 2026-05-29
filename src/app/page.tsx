@@ -10,6 +10,7 @@ import {
   ExternalLink,
   Mail,
   MapPin,
+  MessageCircle,
   ShieldCheck,
   Star,
   Waves,
@@ -203,6 +204,14 @@ const structuredData = {
         "https://www.fishandchipsredcar.co.uk/images/staff-frying.jpg",
       ],
       email: BUSINESS_EMAIL,
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer enquiries",
+          email: BUSINESS_EMAIL,
+          availableLanguage: "en-GB",
+        },
+      ],
       priceRange: "£",
       servesCuisine: ["Fish and chips", "British", "Seafood"],
       acceptsReservations: false,
@@ -312,12 +321,13 @@ export default function Home() {
       <HeroSection />
       <IntroSection />
       <FeatureStrip />
-      <MenuSection />
+      <MenuTeaserSection />
       <SocialSection />
       <OpeningTimesSection />
       <FreshlyCookedSection />
       <VisitSection />
       <PlanningSection />
+      <ContactEnquiriesSection />
       <FaqSection />
       <SiteFooter />
     </main>
@@ -482,6 +492,60 @@ function FeatureStrip() {
             <p className="mt-2 text-sm leading-6 text-zinc-400">{text}</p>
           </div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+
+function MenuTeaserSection() {
+  return (
+    <section id="menu" className="mx-auto max-w-7xl px-5 py-20 md:px-8">
+      <div className="overflow-hidden rounded-[2rem] border border-amber-400/25 bg-zinc-950 shadow-2xl">
+        <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="p-8 md:p-12">
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+              Our Menu
+            </p>
+
+            <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
+              View the full Pier Vista menu.
+            </h2>
+
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
+              The homepage now stays focused on Pier Vista, our seafront
+              location and visitor information. The full menu has its own
+              dedicated page with fish and chips, classics, sides, sauces,
+              drinks, kids meals and specials.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={MENU_PAGE_URL}
+                className="rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
+              >
+                Open Full Menu
+              </a>
+
+              <a
+                href={SEAFRONT_GUIDE_URL}
+                className="rounded-2xl border border-white/15 px-6 py-3 font-black text-white transition hover:bg-white/10"
+              >
+                Plan Your Visit
+              </a>
+            </div>
+          </div>
+
+          <div className="relative min-h-[320px]">
+            <Image
+              src="/images/fish-boxes.jpg"
+              alt="Pier Vista fish and chips menu food"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-gradient-to-r lg:from-zinc-950/20 lg:to-transparent" />
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -902,6 +966,92 @@ function PlanningSection() {
   );
 }
 
+
+
+function ContactEnquiriesSection() {
+  return (
+    <section id="contact" className="mx-auto max-w-7xl px-5 py-20 md:px-8">
+      <div className="overflow-hidden rounded-[2rem] border border-amber-400/25 bg-zinc-950 shadow-2xl">
+        <div className="grid gap-0 lg:grid-cols-[1fr_0.9fr]">
+          <div className="p-8 md:p-12">
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+              Contact Pier Vista
+            </p>
+
+            <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
+              Planning a school trip, nursing home visit or group day out?
+            </h2>
+
+            <div className="mt-5 space-y-4 text-lg leading-8 text-zinc-300">
+              <p>
+                We regularly get enquiries from schools, nursing homes and
+                groups visiting Redcar seafront. Message us before travelling
+                and we can help with practical details like opening updates,
+                seating, accessibility and quieter times.
+              </p>
+
+              <p>
+                The easiest way to contact Pier Vista is by Facebook Messenger.
+                You can also email us if you prefer to send details in writing.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Message on Facebook
+              </a>
+
+              <a
+                href={`mailto:${BUSINESS_EMAIL}?subject=Pier%20Vista%20group%20visit%20enquiry`}
+                className="inline-flex items-center gap-2 rounded-2xl border border-white/15 px-6 py-3 font-black text-white transition hover:bg-white/10"
+              >
+                <Mail className="h-5 w-5" />
+                Email Pier Vista
+              </a>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 bg-white/[0.04] p-8 md:p-12 lg:border-l lg:border-t-0">
+            <h3 className="font-serif text-3xl font-black">
+              Useful to mention in your message
+            </h3>
+
+            <div className="mt-6 grid gap-4">
+              {[
+                "Date and approximate arrival time",
+                "Number of people in the group",
+                "Whether you need seating inside or takeaway",
+                "Any accessibility needs",
+                "Whether it is a school, care home or coach/day-trip visit",
+              ].map((item, index) => (
+                <div
+                  key={item}
+                  className="flex gap-4 rounded-3xl border border-white/10 bg-black/20 p-4"
+                >
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-amber-400 font-black text-black">
+                    {index + 1}
+                  </div>
+                  <p className="self-center font-bold text-zinc-100">{item}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-6 text-sm leading-6 text-zinc-500">
+              We do not display a public phone number at the moment. Facebook
+              Messenger or email are the best contact routes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function FaqSection() {
   return (
