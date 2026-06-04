@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import { Analytics } from "@vercel/analytics/next"
 const siteUrl = "https://www.fishandchipsredcar.co.uk";
 
 export const metadata: Metadata = {
@@ -92,6 +92,7 @@ export default function RootLayout({
         />
       </head>
       <body>{children}</body>
+      <Analytics/>
     </html>
   );
 }

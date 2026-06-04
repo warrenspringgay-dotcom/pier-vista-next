@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 import {
   Accessibility,
   Baby,
   Car,
   Dog,
   ExternalLink,
-  FerrisWheel,
-  IceCreamBowl,
-  Landmark,
-  LifeBuoy,
   MapPin,
-  Music,
-  Palette,
   ShieldCheck,
   Star,
   Utensils,
   Waves,
-  Wind,
 } from "lucide-react";
 
 const siteUrl = "https://www.fishandchipsredcar.co.uk";
@@ -35,16 +26,16 @@ const majubaQuery = encodeURIComponent("Majuba Road Car Park Redcar TS10 5BJ");
 const majubaMapsUrl = `https://www.google.com/maps/search/?api=1&query=${majubaQuery}`;
 
 export const metadata: Metadata = {
-  title: "Things to Do on Redcar Seafront | Fish and Chips Near Redcar Beacon",
+  title: "Fish and Chips Redcar Seafront | Pier Vista Fish & Chips",
   description:
-    "Plan a Redcar seafront visit with fish and chips at Pier Vista, opposite Redcar Beacon. Nearby parking, promenade walks, Majuba Beach, amusements, lifeboat museum, summer events and lemon top ice creams.",
+    "Traditional fish and chips on Redcar seafront, directly opposite the Redcar Beacon. Seating inside, takeaway available, dog friendly, disabled access and nearby parking at Majuba.",
   alternates: {
     canonical: pageUrl,
   },
   openGraph: {
-    title: "Things to Do on Redcar Seafront | Pier Vista Fish & Chips",
+    title: "Fish and Chips Redcar Seafront | Pier Vista Fish & Chips",
     description:
-      "A practical visitor guide to Redcar seafront, Majuba Beach, Redcar Beacon, amusements, events and traditional fish and chips at Pier Vista.",
+      "Visit Pier Vista for traditional fish and chips on Redcar seafront, opposite the Redcar Beacon and close to Majuba Beach.",
     url: pageUrl,
     siteName: "Pier Vista Fish & Chips",
     images: [
@@ -60,38 +51,38 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Things to Do on Redcar Seafront | Pier Vista Fish & Chips",
+    title: "Fish and Chips Redcar Seafront | Pier Vista Fish & Chips",
     description:
-      "Plan a Redcar seafront visit with fish and chips, promenade walks, Majuba Beach, amusements, events and Redcar Beacon.",
+      "Traditional fish and chips on Redcar seafront, directly opposite the Redcar Beacon.",
     images: ["/images/fish-boxes.jpg"],
   },
 };
 
 const faqs = [
   {
-    question: "Where is Pier Vista Fish & Chips?",
+    question: "Where can I get fish and chips on Redcar seafront?",
     answer:
-      "Pier Vista Fish & Chips is on Redcar seafront, directly opposite the Redcar Beacon and close to Majuba Beach, the promenade and seafront attractions.",
+      "Pier Vista Fish & Chips is directly on Redcar seafront, opposite the Redcar Beacon, serving traditional fish and chips with seating inside and takeaway available.",
   },
   {
-    question: "What can families do near Pier Vista?",
+    question: "Is Pier Vista near Redcar Beacon?",
     answer:
-      "Families can enjoy Redcar beach, promenade walks, nearby amusements, seasonal children’s rides, crazy golf around Majuba and local events during the warmer months.",
+      "Yes. Pier Vista is directly opposite the Redcar Beacon, making it easy to find from the seafront and promenade.",
   },
   {
-    question: "Where can I park near Redcar seafront?",
+    question: "Where can I park near Pier Vista?",
     answer:
-      "Majuba Road Car Park is a useful seafront parking option for visitors planning to walk along the front, visit the beach or stop for fish and chips.",
+      "Majuba Road Car Park is a useful nearby seafront parking option. From there, Pier Vista is only a short walk along the front.",
   },
   {
-    question: "Is Redcar good for a simple seaside day out?",
+    question: "Is Pier Vista family friendly?",
     answer:
-      "Yes. Redcar is good for beach walks, traditional seaside food, lemon top ice creams, amusements, events, the Redcar Beacon and local heritage such as the Zetland Lifeboat Museum.",
+      "Yes. Pier Vista has seating inside for around 25 customers, high chairs available and a menu with family favourites and kids options.",
   },
   {
-    question: "Do Pier Vista opening times change?",
+    question: "Is Pier Vista dog friendly?",
     answer:
-      "Yes. Pier Vista is a seasonal seafront business, so opening times can vary with weather, school holidays and visitor demand. Check the Facebook page before travelling.",
+      "Yes. Pier Vista is dog friendly, which makes it a useful stop for visitors walking along Redcar seafront.",
   },
 ];
 
@@ -113,7 +104,7 @@ const structuredData = {
       servesCuisine: ["Fish and chips", "British", "Seafood"],
       acceptsReservations: false,
       foundingDate: "2013",
-      hasMenu: `${siteUrl}/menu`,
+      hasMenu: `${siteUrl}/#menu`,
       sameAs: [facebookUrl],
       address: {
         "@type": "PostalAddress",
@@ -162,7 +153,7 @@ const structuredData = {
       "@type": "WebPage",
       "@id": `${pageUrl}#webpage`,
       url: pageUrl,
-      name: "Things to Do on Redcar Seafront",
+      name: "Fish and Chips on Redcar Seafront",
       isPartOf: {
         "@id": `${siteUrl}/#website`,
       },
@@ -174,7 +165,7 @@ const structuredData = {
         url: `${siteUrl}/images/fish-boxes.jpg`,
       },
       description:
-        "A visitor guide to Redcar seafront, Redcar Beacon, Majuba Beach, events, attractions and Pier Vista Fish & Chips.",
+        "A visitor guide to Pier Vista Fish & Chips on Redcar seafront, opposite the Redcar Beacon and close to Majuba Beach.",
     },
     {
       "@type": "FAQPage",
@@ -191,101 +182,26 @@ const structuredData = {
   ],
 };
 
-
-const seafrontPhotos = [
-  {
-    src: "/images/redcar-seafront-promenade-view.jpg",
-    alt: "View along Redcar seafront promenade from near Redcar Beacon",
-    title: "Promenade views",
-  },
-  {
-    src: "/images/redcar-beach-promenade-view.jpg",
-    alt: "Redcar beach and promenade looking along the seafront",
-    title: "Beach walks",
-  },
-  {
-    src: "/images/majuba-beach-redcar-beacon.jpg",
-    alt: "Majuba Beach and Redcar Beacon on a sunny day",
-    title: "Majuba Beach",
-  },
-  {
-    src: "/images/redcar-beacon-from-seafront.jpg",
-    alt: "Redcar Beacon viewed from the seafront road",
-    title: "Redcar Beacon",
-  },
-];
-
-const quickHighlights = [
+const highlights = [
   {
     icon: Waves,
-    title: "Seafront & Beach",
-    text: "Promenade walks, beach views, sea air and easy access to the front.",
-  },
-  {
-    icon: Landmark,
-    title: "Redcar Beacon",
-    text: "Pier Vista is directly opposite the Beacon, one of Redcar’s easiest landmarks.",
-  },
-  {
-    icon: Car,
-    title: "Majuba Parking",
-    text: "Majuba Road Car Park is a useful base for visiting the beach and seafront.",
+    title: "On Redcar Seafront",
+    text: "Pier Vista is directly on the seafront, opposite the Redcar Beacon.",
   },
   {
     icon: Utensils,
-    title: "Traditional Food",
-    text: "Fish and chips, sides, sauces, kids meals and seaside favourites.",
-  },
-];
-
-const thingsToDo = [
-  {
-    icon: Landmark,
-    title: "Redcar Beacon",
-    text: "The Beacon is the vertical landmark on the seafront. It is useful as a meeting point, photo stop and wayfinding point when visiting the front.",
+    title: "Traditional Fish & Chips",
+    text: "Freshly cooked chip-shop classics, proper chips, sides and seaside favourites.",
   },
   {
-    icon: Waves,
-    title: "Promenade & Beach Walks",
-    text: "Redcar’s seafront is ideal for a simple walk along the promenade, beach time, sea views and a traditional seaside food stop.",
+    icon: Car,
+    title: "Nearby Parking",
+    text: "Majuba Road Car Park is a useful parking option for visitors.",
   },
   {
-    icon: FerrisWheel,
-    title: "Amusements & Family Fun",
-    text: "The seafront has classic family attractions nearby, including amusements, arcades and seasonal children’s rides during busier summer periods.",
-  },
-  {
-    icon: Palette,
-    title: "Public Art & Seafront Installations",
-    text: "Look out for seafront artwork and installations around Redcar, including playful features such as the penguins and other pieces that make the front more memorable for families.",
-  },
-  {
-    icon: LifeBuoy,
-    title: "Zetland Lifeboat Museum",
-    text: "A strong heritage stop for visitors. The Zetland lifeboat is an important part of Redcar’s coastal history and is a good add-on to a seafront day out.",
-  },
-  {
-    icon: IceCreamBowl,
-    title: "Lemon Top Ice Creams",
-    text: "A Redcar classic. A lemon top is part of the local seaside experience and pairs perfectly with a walk along the front.",
-  },
-];
-
-const eventCards = [
-  {
-    icon: Wind,
-    title: "Kite Festival at Majuba Beach",
-    text: "Redcar’s kite festival brings colour to the seafront with large inflatable kites, stunt kites and family activity around Majuba Beach.",
-  },
-  {
-    icon: Music,
-    title: "Music, Markets & Summer Events",
-    text: "Majuba and the seafront often host seasonal events, markets, live music and festival-style weekends through the warmer months.",
-  },
-  {
-    icon: FerrisWheel,
-    title: "School Holiday Family Days",
-    text: "In summer and school holidays the seafront usually has a stronger family feel, with beach visits, rides, amusements and food stops all close together.",
+    icon: ShieldCheck,
+    title: "5★ Food Hygiene",
+    text: "A clean, well-run kitchen with a top food hygiene rating.",
   },
 ];
 
@@ -305,11 +221,6 @@ const visitorFeatures = [
     title: "High Chairs",
     text: "Family-friendly seating available.",
   },
-  {
-    icon: ShieldCheck,
-    title: "5★ Hygiene",
-    text: "A clean, well-run kitchen.",
-  },
 ];
 
 export default function FishAndChipsRedcarSeafrontPage() {
@@ -322,32 +233,37 @@ export default function FishAndChipsRedcarSeafrontPage() {
         }}
       />
 
-      <SiteHeader />
-
       <section className="relative isolate overflow-hidden border-b border-amber-400/20">
         <ScalePattern />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(251,191,36,0.18),transparent_38%),linear-gradient(to_bottom,rgba(7,9,11,0.2),#07090b)]" />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:grid-cols-[1.04fr_.96fr] md:px-8 lg:py-24">
           <div>
+            <a
+              href="/"
+              className="mb-6 inline-flex rounded-full border border-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-zinc-300 transition hover:border-amber-300/50 hover:text-white"
+            >
+              ← Back to Pier Vista
+            </a>
+
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.26em] text-amber-200">
               <Star className="h-4 w-4" />
-              Redcar Seafront Visitor Guide
+              Redcar Seafront Fish & Chips
             </p>
 
             <h1 className="max-w-4xl font-serif text-5xl font-black leading-[0.95] tracking-tight md:text-7xl">
-              Things to Do on Redcar Seafront
+              Fish and Chips on Redcar Seafront
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300 md:text-xl">
-              Plan a proper Redcar seaside visit: promenade walks, Majuba Beach,
-              Redcar Beacon, amusements, family attractions, local events,
-              lemon top ice creams and traditional fish and chips at Pier Vista.
+              Visit Pier Vista Fish & Chips for traditional fish and chips on
+              Redcar seafront, directly opposite the Redcar Beacon and close to
+              Majuba Beach, the promenade, amusements and family attractions.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="/menu"
+                href="/#menu"
                 className="rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
               >
                 View Menu
@@ -368,8 +284,8 @@ export default function FishAndChipsRedcarSeafrontPage() {
             <div className="absolute -inset-4 rounded-[2rem] bg-amber-400/10 blur-3xl" />
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-3 shadow-2xl">
               <Image
-                src="/images/redcar-seafront-promenade-view.jpg"
-                alt="Redcar seafront promenade view from near Redcar Beacon"
+                src="/images/fish-boxes.jpg"
+                alt="Traditional fish and chips from Pier Vista on Redcar seafront"
                 width={1200}
                 height={900}
                 className="aspect-[4/3] rounded-[1.5rem] object-cover"
@@ -382,7 +298,7 @@ export default function FishAndChipsRedcarSeafrontPage() {
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
         <div className="grid gap-4 md:grid-cols-4">
-          {quickHighlights.map(({ icon: Icon, title, text }) => (
+          {highlights.map(({ icon: Icon, title, text }) => (
             <div
               key={title}
               className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-amber-400/40 hover:bg-white/[0.06]"
@@ -390,43 +306,6 @@ export default function FishAndChipsRedcarSeafrontPage() {
               <Icon className="mb-4 h-9 w-9 text-amber-300" />
               <h2 className="font-bold">{title}</h2>
               <p className="mt-2 text-sm leading-6 text-zinc-400">{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-
-      <section className="mx-auto max-w-7xl px-5 pb-20 md:px-8">
-        <div className="mb-8 max-w-3xl">
-          <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
-            Seafront Views
-          </p>
-          <h2 className="mt-3 font-serif text-4xl font-black md:text-5xl">
-            See Redcar before you visit
-          </h2>
-          <p className="mt-4 leading-7 text-zinc-300">
-            A few real views from around the seafront, beach and Redcar Beacon.
-            These help visitors understand exactly where Pier Vista sits and
-            what is nearby.
-          </p>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {seafrontPhotos.map((photo) => (
-            <div
-              key={photo.src}
-              className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-xl"
-            >
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                width={900}
-                height={700}
-                className="aspect-[4/3] object-cover transition duration-500 group-hover:scale-105"
-              />
-              <div className="border-t border-white/10 p-4">
-                <p className="font-bold text-white">{photo.title}</p>
-              </div>
             </div>
           ))}
         </div>
@@ -440,28 +319,27 @@ export default function FishAndChipsRedcarSeafrontPage() {
             </p>
 
             <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
-              Start with the seafront, then stop for proper fish and chips.
+              Traditional fish and chips in the heart of the seafront.
             </h2>
 
             <div className="mt-6 space-y-5 text-lg leading-8 text-zinc-300">
               <p>
                 Pier Vista is a family-run fish and chip shop established in
-                2013. We are based directly on Redcar seafront opposite the
-                Redcar Beacon, so we are easy to find if you are walking the
-                promenade, visiting the beach or heading towards Majuba.
+                2013. We are based on Redcar seafront, directly opposite the
+                Redcar Beacon, making us easy to find for visitors walking the
+                promenade or spending the day by the beach.
               </p>
 
               <p>
-                Redcar works best as a simple seaside day out: park near Majuba,
-                walk the front, visit the amusements or beach, look out for
-                local art and installations, grab a lemon top, then finish with
-                hot fish and chips.
+                Whether you are searching for fish and chips in Redcar, a
+                takeaway near the Redcar Beacon, or somewhere family friendly to
+                eat on the seafront, Pier Vista is set up for both quick
+                takeaway visits and seated meals inside.
               </p>
 
               <p>
-                Pier Vista has seating inside for around 25, takeaway available,
-                disabled access, high chairs and a dog-friendly approach for
-                visitors enjoying the front with the whole family.
+                We keep the food traditional: fish, chips, sides, sauces, kids
+                meals and seaside favourites cooked properly and served hot.
               </p>
             </div>
           </div>
@@ -469,7 +347,7 @@ export default function FishAndChipsRedcarSeafrontPage() {
           <div className="grid gap-4">
             <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl">
               <Image
-                src="/images/pier-vista-shop-front-seafront.jpg"
+                src="/images/shop-front.jpg"
                 alt="Pier Vista Fish and Chips shop front on Redcar seafront"
                 width={1200}
                 height={800}
@@ -477,7 +355,7 @@ export default function FishAndChipsRedcarSeafrontPage() {
               />
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-3">
               {visitorFeatures.map(({ icon: Icon, title, text }) => (
                 <div
                   key={title}
@@ -497,152 +375,70 @@ export default function FishAndChipsRedcarSeafrontPage() {
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="mx-auto mb-10 max-w-3xl text-center">
             <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
-              Redcar Seafront Guide
+              Visitor Planning
             </p>
             <h2 className="mt-3 font-serif text-4xl font-black md:text-5xl">
-              What to do near Pier Vista
+              Parking near Majuba and food on the seafront
             </h2>
             <p className="mt-4 leading-7 text-zinc-300">
-              Redcar seafront has more to it than a quick beach walk. Use Pier
-              Vista as a food stop while planning a simple route around the
-              Beacon, promenade, amusements, Majuba and local heritage spots.
+              If you are visiting Redcar beach, Majuba, the amusements or the
+              promenade, Pier Vista is well placed for food before or after your
+              walk along the seafront.
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {thingsToDo.map(({ icon: Icon, title, text }) => (
-              <div
-                key={title}
-                className="rounded-[2rem] border border-white/10 bg-[#0b0f12] p-7 shadow-xl transition hover:border-amber-400/40 hover:bg-white/[0.05]"
-              >
-                <div className="mb-5 inline-flex rounded-2xl bg-amber-400/10 p-3 text-amber-300">
-                  <Icon className="h-8 w-8" />
-                </div>
-                <h3 className="font-serif text-3xl font-black">{title}</h3>
-                <p className="mt-4 leading-8 text-zinc-300">{text}</p>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div className="rounded-[2rem] border border-white/10 bg-[#0b0f12] p-8 shadow-xl">
+              <div className="mb-4 inline-flex rounded-2xl bg-amber-400/10 p-3 text-amber-300">
+                <Car className="h-8 w-8" />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-20 md:px-8">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-[2rem] border border-white/10 bg-zinc-950 p-8 shadow-2xl">
-            <div className="mb-4 inline-flex rounded-2xl bg-amber-400/10 p-3 text-amber-300">
-              <Car className="h-7 w-7" />
-            </div>
+              <h3 className="font-serif text-3xl font-black">
+                Nearby parking at Majuba
+              </h3>
 
-            <h2 className="font-serif text-4xl font-black">
-              Parking near Majuba Beach
-            </h2>
-
-            <div className="mt-5 space-y-4 leading-8 text-zinc-300">
-              <p>
-                Majuba Road Car Park is a useful option for Redcar seafront
-                visitors. It puts you close to Majuba Beach, the promenade and
-                family attractions, with Pier Vista only a short walk along the
-                front towards the Redcar Beacon.
+              <p className="mt-5 leading-8 text-zinc-300">
+                Majuba Road Car Park is a useful parking option for Redcar
+                seafront visitors. From there, you can walk along the front
+                towards the Redcar Beacon and stop at Pier Vista for traditional
+                fish and chips.
               </p>
 
-              <p>
-                This makes it easy to build a simple route: park at Majuba, walk
-                the beach or promenade, visit the amusements or Beacon, then
-                call into Pier Vista for fish and chips before heading home.
-              </p>
-            </div>
-
-            <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href={majubaMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
+                className="mt-7 inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black transition hover:bg-amber-300"
               >
                 Open Majuba Parking
                 <ExternalLink className="h-4 w-4" />
               </a>
+            </div>
+
+            <div className="rounded-[2rem] border border-white/10 bg-[#0b0f12] p-8 shadow-xl">
+              <div className="mb-4 inline-flex rounded-2xl bg-amber-400/10 p-3 text-amber-300">
+                <MapPin className="h-8 w-8" />
+              </div>
+
+              <h3 className="font-serif text-3xl font-black">
+                Easy to find opposite Redcar Beacon
+              </h3>
+
+              <p className="mt-5 leading-8 text-zinc-300">
+                We are directly opposite the Redcar Beacon, close to the
+                promenade, beach, arcades and seafront attractions. Look for
+                Pier Vista Fish & Chips when you reach the front.
+              </p>
 
               <a
                 href={googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-2xl border border-white/15 px-6 py-3 font-black text-white transition hover:bg-white/10"
+                className="mt-7 inline-flex items-center gap-2 rounded-2xl border border-white/20 px-6 py-3 font-black text-white transition hover:bg-white/10"
               >
-                Open Pier Vista
+                Open Pier Vista on Google Maps
                 <ExternalLink className="h-4 w-4" />
               </a>
-            </div>
-          </div>
-
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-2xl">
-            <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
-              Seasonal Events
-            </p>
-
-            <h2 className="mt-4 font-serif text-4xl font-black leading-tight">
-              Festivals, markets and summer days out
-            </h2>
-
-            <div className="mt-6 grid gap-4">
-              {eventCards.map(({ icon: Icon, title, text }) => (
-                <div
-                  key={title}
-                  className="rounded-3xl border border-white/10 bg-black/20 p-5"
-                >
-                  <Icon className="mb-3 h-7 w-7 text-amber-300" />
-                  <h3 className="font-serif text-2xl font-black">{title}</h3>
-                  <p className="mt-2 leading-7 text-zinc-300">{text}</p>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-6 text-sm leading-6 text-zinc-500">
-              Events and seasonal attractions change, so check local listings
-              and our Facebook page before travelling.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-white/10 bg-zinc-950/80 py-20">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
-                Simple Visitor Route
-              </p>
-
-              <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
-                A straightforward Redcar seafront plan
-              </h2>
-
-              <p className="mt-5 text-lg leading-8 text-zinc-300">
-                This is the cleanest visitor flow: park at Majuba, walk the
-                promenade, see the Beacon, enjoy the beach or amusements, grab a
-                lemon top if you are doing the full Redcar experience, then stop
-                at Pier Vista for traditional fish and chips.
-              </p>
-            </div>
-
-            <div className="grid gap-4">
-              {[
-                "Park near Majuba Road Car Park",
-                "Walk the promenade towards Redcar Beacon",
-                "Visit the beach, amusements, artwork and local attractions",
-                "Stop at Pier Vista for fish and chips on the seafront",
-                "Check Facebook for opening updates before travelling",
-              ].map((step, index) => (
-                <div
-                  key={step}
-                  className="flex gap-4 rounded-3xl border border-white/10 bg-white/[0.04] p-5"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-400 font-black text-black">
-                    {index + 1}
-                  </div>
-                  <p className="self-center font-bold text-zinc-100">{step}</p>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -668,7 +464,7 @@ export default function FishAndChipsRedcarSeafrontPage() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="/menu"
+                href="/#menu"
                 className="rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
               >
                 View Full Menu
@@ -688,12 +484,12 @@ export default function FishAndChipsRedcarSeafrontPage() {
 
           <div className="grid grid-cols-2 gap-3">
             <ImageCard
-              src="/images/redcar-beacon-closeup.jpg"
-              alt="Close-up view of Redcar Beacon on Redcar seafront"
+              src="/images/fish-fryer-closeup.jpg"
+              alt="Fresh battered fish being cooked at Pier Vista"
             />
             <ImageCard
-              src="/images/family-fish-and-chips-redcar-1.png"
-              alt="Family enjoying fish and chips near Redcar seafront"
+              src="/images/chips-serving.jpg"
+              alt="Fresh chips being served at Pier Vista Redcar"
             />
             <ImageCard
               src="/images/scraps-box.jpg"
@@ -713,7 +509,7 @@ export default function FishAndChipsRedcarSeafrontPage() {
             FAQs
           </p>
           <h2 className="mt-3 font-serif text-4xl font-black md:text-5xl">
-            Visiting Redcar Seafront
+            Visiting Pier Vista
           </h2>
         </div>
 
@@ -729,8 +525,6 @@ export default function FishAndChipsRedcarSeafrontPage() {
           ))}
         </div>
       </section>
-
-      <SiteFooter />
     </main>
   );
 }
