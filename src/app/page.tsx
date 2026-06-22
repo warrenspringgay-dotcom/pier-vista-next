@@ -517,9 +517,8 @@ function MenuTeaserSection() {
             </h2>
 
             <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
-              The homepage now stays focused on Pier Vista, our seafront
-              location and visitor information. The full menu has its own
-              dedicated page with fish and chips, classics, sides, sauces,
+              The full menu has its own
+              dedicated page with all our dishes such as fish and chips, classics, sides, sauces,
               drinks, kids meals and specials.
             </p>
 
