@@ -1004,7 +1004,7 @@ function SisterShopSection() {
 
           <div className="relative min-h-[320px]">
             <Image
-              src="/images/shop-front.jpg"
+              src="/images/stonehouses-shop-front.jpg"
               alt="Pier Vista Fish and Chips on Redcar seafront"
               fill
               className="object-cover"
