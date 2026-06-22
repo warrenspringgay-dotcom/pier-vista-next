@@ -37,6 +37,7 @@ const BUSINESS_EMAIL = "info@fishandchipsredcar.co.uk";
 const MENU_PAGE_URL = "/menu";
 const SEAFRONT_GUIDE_URL = "/fish-and-chips-redcar-seafront";
 const BUSINESS_ADDRESS = "Redcar Seafront, Redcar TS10 3AA";
+const STONEHOUSES_URL = "https://www.stonehouseschipshop.co.uk";
 const OPENING_TIMES_NOTE =
   "Opening times vary seasonally — please check Facebook for the latest updates before travelling.";
 
@@ -330,6 +331,7 @@ export default function Home() {
       <PlanningSection />
       <ReviewSection />
       <ContactEnquiriesSection />
+      <SisterShopSection />
       <FaqSection />
       <SiteFooter />
     </main>
@@ -970,6 +972,50 @@ function PlanningSection() {
 
 
 
+
+function SisterShopSection() {
+  return (
+    <section className="mx-auto max-w-7xl px-5 py-20 md:px-8">
+      <div className="overflow-hidden rounded-[2rem] border border-amber-400/25 bg-gradient-to-br from-amber-400/10 via-zinc-950 to-black shadow-2xl">
+        <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="p-8 md:p-12">
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+              Our Sister Shop
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
+              Looking for a proper village chippy?
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
+              Visit our sister shop, Stonehouse’s Fish &amp; Chips in Lingdale.
+              Family run since 1999, Stonehouse’s serves local families and nearby
+              villages with freshly cooked fish and chips, meal deals and familiar
+              chip-shop favourites.
+            </p>
+            <a
+              href={STONEHOUSES_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
+            >
+              Visit Stonehouse’s Fish &amp; Chips
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+
+          <div className="relative min-h-[320px]">
+            <Image
+              src="/images/shop-front.jpg"
+              alt="Pier Vista Fish and Chips on Redcar seafront"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function ReviewSection() {
   return (
