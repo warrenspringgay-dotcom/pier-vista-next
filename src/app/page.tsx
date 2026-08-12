@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -22,6 +23,31 @@ type MenuItem = {
   note?: string;
 };
 
+const SITE_URL = "https://www.fishandchipsredcar.co.uk";
+
+export const metadata: Metadata = {
+  title: "Pier Vista Fish & Chips Redcar | Seafront Chippy Opposite Redcar Beacon",
+  description:
+    "Traditional fish and chips on Redcar seafront, opposite Redcar Beacon. Family run since 2013 with indoor seating, takeaway, kids meals, high chairs and proper cod & chips.",
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    title: "Pier Vista Fish & Chips Redcar | Redcar Seafront",
+    description:
+      "Family-run fish and chips on Redcar seafront, opposite Redcar Beacon. Indoor seating, takeaway, kids meals and proper cod & chips.",
+    url: SITE_URL,
+    siteName: "Pier Vista Fish & Chips",
+    type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/images/fish-boxes.jpg`,
+        width: 1200,
+        height: 900,
+        alt: "Pier Vista fish and chips on Redcar seafront",
+      },
+    ],
+  },
+};
+
 const BUSINESS_NAME = "Pier Vista Fish & Chips";
 const MAP_QUERY = encodeURIComponent("Pier Vista Fish & Chips, Redcar TS10 3AA");
 const GOOGLE_MAPS_EMBED_URL = `https://maps.google.com/maps?q=${MAP_QUERY}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
@@ -39,12 +65,13 @@ const SEAFRONT_GUIDE_URL = "/fish-and-chips-redcar-seafront";
 const BUSINESS_ADDRESS = "Redcar Seafront, Redcar TS10 3AA";
 const STONEHOUSES_URL = "https://www.stonehouseschipshop.co.uk";
 const OPENING_TIMES_NOTE =
-  "Opening times vary seasonally — please check Facebook for the latest updates before travelling.";
+  "Opening times vary seasonally — check our Facebook page for today's latest opening update before travelling.";
 
 const heroStats = [
   "Family Run Since 2013",
   "5★ Food Hygiene Rating",
   "Seating Inside for 25",
+  "Opposite Redcar Beacon",
 ];
 
 const menuSections: { title: string; intro: string; items: MenuItem[] }[] = [
@@ -187,7 +214,22 @@ const faqs = [
   {
     question: "Do opening times change?",
     answer:
-      "Yes. Pier Vista is a seasonal seafront business, so opening times can vary. Please check the Facebook page for the latest updates before travelling.",
+      "Yes. Pier Vista is a seasonal seafront business, so opening times can vary. Please check the Facebook page for today's latest updates before travelling.",
+  },
+  {
+    question: "Do you serve kids meals?",
+    answer:
+      "Yes. Pier Vista serves kids meals, including kids fish and chips, making it a useful stop for families visiting Redcar seafront.",
+  },
+  {
+    question: "Do you offer takeaway fish and chips?",
+    answer:
+      "Yes. You can order takeaway fish and chips from Pier Vista and enjoy them on Redcar seafront, or sit inside when seating is available.",
+  },
+  {
+    question: "Are you near Redcar Beacon and Majuba Beach?",
+    answer:
+      "Yes. Pier Vista is directly opposite Redcar Beacon and close to Majuba Beach, the promenade, amusements and nearby parking.",
   },
 ];
 
@@ -197,13 +239,13 @@ const structuredData = {
   "@graph": [
     {
       "@type": "Restaurant",
-      "@id": "https://www.fishandchipsredcar.co.uk/#restaurant",
+      "@id": `${SITE_URL}/#restaurant`,
       name: BUSINESS_NAME,
-      url: "https://www.fishandchipsredcar.co.uk",
+      url: SITE_URL,
       image: [
-        "https://www.fishandchipsredcar.co.uk/images/fish-boxes.jpg",
-        "https://www.fishandchipsredcar.co.uk/images/shop-front.jpg",
-        "https://www.fishandchipsredcar.co.uk/images/staff-frying.jpg",
+        `${SITE_URL}/images/fish-boxes.jpg`,
+        `${SITE_URL}/images/shop-front.jpg`,
+        `${SITE_URL}/images/staff-frying.jpg`,
       ],
       email: BUSINESS_EMAIL,
       contactPoint: [
@@ -233,7 +275,11 @@ const structuredData = {
         "Redcar Beacon",
       ],
       sameAs: [FACEBOOK_URL],
-      hasMenu: "https://www.fishandchipsredcar.co.uk/menu",
+      hasMenu: `${SITE_URL}/menu`,
+      hasMap: GOOGLE_MAPS_DIRECTIONS_URL,
+      menu: `${SITE_URL}/menu`,
+      keywords:
+        "fish and chips Redcar, Redcar seafront fish and chips, chip shop near Redcar Beacon, Pier Vista Fish and Chips",
       amenityFeature: [
         {
           "@type": "LocationFeatureSpecification",
@@ -262,38 +308,38 @@ const structuredData = {
         },
       ],
       description:
-        "Traditional family-run fish and chips on Redcar seafront, directly opposite the Redcar Beacon. Established in 2013 with seating inside, disabled access, dog friendly service and a 5-star food hygiene rating.",
+        "Traditional family-run fish and chips on Redcar seafront, directly opposite Redcar Beacon. Established in 2013 with seating inside, takeaway, kids meals, high chairs, disabled access, dog friendly service and a 5-star food hygiene rating.",
     },
     {
       "@type": "WebSite",
-      "@id": "https://www.fishandchipsredcar.co.uk/#website",
-      url: "https://www.fishandchipsredcar.co.uk",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
       name: BUSINESS_NAME,
       publisher: {
-        "@id": "https://www.fishandchipsredcar.co.uk/#restaurant",
+        "@id": `${SITE_URL}/#restaurant`,
       },
     },
     {
       "@type": "WebPage",
-      "@id": "https://www.fishandchipsredcar.co.uk/#webpage",
-      url: "https://www.fishandchipsredcar.co.uk",
-      name: "Pier Vista Fish & Chips | Redcar Seafront",
+      "@id": `${SITE_URL}/#webpage`,
+      url: SITE_URL,
+      name: "Pier Vista Fish & Chips Redcar | Seafront Chippy Opposite Redcar Beacon",
       isPartOf: {
-        "@id": "https://www.fishandchipsredcar.co.uk/#website",
+        "@id": `${SITE_URL}/#website`,
       },
       about: {
-        "@id": "https://www.fishandchipsredcar.co.uk/#restaurant",
+        "@id": `${SITE_URL}/#restaurant`,
       },
       primaryImageOfPage: {
         "@type": "ImageObject",
-        url: "https://www.fishandchipsredcar.co.uk/images/fish-boxes.jpg",
+        url: `${SITE_URL}/images/fish-boxes.jpg`,
       },
       description:
-        "Traditional fish and chips on Redcar seafront, directly opposite the Redcar Beacon.",
+        "Traditional fish and chips on Redcar seafront, directly opposite Redcar Beacon. Family run since 2013 with indoor seating, takeaway, kids meals and proper cod and chips.",
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.fishandchipsredcar.co.uk/#faq",
+      "@id": `${SITE_URL}/#faq`,
       mainEntity: faqs.map((faq) => ({
         "@type": "Question",
         name: faq.question,
@@ -354,12 +400,13 @@ function HeroSection() {
           </p>
 
           <h1 className="max-w-3xl font-serif text-5xl font-black leading-[0.95] tracking-tight md:text-7xl">
-            Traditional Fish & Chips on Redcar Seafront
+            Pier Vista Fish & Chips on Redcar Seafront
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300 md:text-xl">
-            Freshly cooked fish and chips from a family-run seaside shop,
-            established in 2013 and located directly opposite the Redcar Beacon.
+            Freshly cooked cod and chips from a family-run Redcar chippy,
+            established in 2013 and located directly opposite Redcar Beacon.
+            Sit inside or take your fish and chips onto the seafront.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -370,10 +417,12 @@ function HeroSection() {
               View Menu
             </a>
             <a
-              href="#visit"
+              href={GOOGLE_MAPS_DIRECTIONS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-2xl border border-white/20 px-6 py-3 font-black text-white transition hover:bg-white/10"
             >
-              Plan Your Visit
+              Get Directions
             </a>
             <a
               href={SEAFRONT_GUIDE_URL}
@@ -388,11 +437,11 @@ function HeroSection() {
               className="inline-flex items-center gap-2 rounded-2xl border border-amber-400/30 bg-amber-400/10 px-6 py-3 font-black text-amber-200 transition hover:bg-amber-400/20"
             >
               <FacebookIcon className="h-4 w-4" />
-              Follow Us
+              Check Opening Today
             </a>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {heroStats.map((item) => (
               <div
                 key={item}
@@ -440,15 +489,16 @@ function IntroSection() {
               <p>
                 Pier Vista has been part of Redcar seafront since 2013, serving
                 freshly cooked fish and chips to families, day visitors, local
-                regulars and people enjoying the coastline.
+                regulars and people enjoying the beach, promenade and Redcar
+                town centre.
               </p>
 
               <p>
-                We keep things simple: good ingredients, proper chip-shop
-                favourites, generous portions and friendly service. Whether you
-                are sitting in after a walk along the front or taking food away
-                to enjoy by the sea, the aim is the same — hot, traditional fish
-                and chips done properly.
+                We keep things simple: proper cod, chip-shop favourites, generous
+                portions and friendly service. Whether you are sitting in after
+                a walk along the front or taking food away to enjoy by the sea,
+                the aim is the same: hot, traditional fish and chips done
+                properly.
               </p>
 
               <p>
@@ -513,13 +563,13 @@ function MenuTeaserSection() {
             </p>
 
             <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
-              View the full Pier Vista menu.
+              Fish and chips, kids meals and seaside favourites.
             </h2>
 
             <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
-              The full menu has its own
-              dedicated page with all our dishes such as fish and chips, classics, sides, sauces,
-              drinks, kids meals and specials.
+              View the Pier Vista menu, including cod and chips, kids meals,
+              pensioners special, chip-shop classics, sides, sauces and drinks.
+              Find us on Redcar seafront opposite Redcar Beacon.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -694,7 +744,7 @@ function OpeningTimesSection() {
           </p>
 
           <h2 className="mt-4 font-serif text-4xl font-black leading-tight md:text-5xl">
-            Planning a visit to Redcar seafront?
+            Fish and chips open on Redcar seafront today?
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-zinc-300">
@@ -704,9 +754,10 @@ function OpeningTimesSection() {
           <div className="mt-7 rounded-3xl border border-white/10 bg-white/[0.04] p-5">
             <h3 className="font-bold text-white">Before you travel</h3>
             <p className="mt-2 leading-7 text-zinc-400">
-              Pier Vista is a seasonal seafront business, so opening times can
-              change with weather, school holidays and visitor demand. For the
-              most reliable update, check our Facebook page.
+              Pier Vista is a seasonal seafront fish and chip shop, so opening
+              times can change with weather, school holidays and visitor demand.
+              For the most reliable same-day update, check our Facebook page
+              before travelling.
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
@@ -775,7 +826,7 @@ function FreshlyCookedSection() {
             Freshly Cooked
           </p>
           <h2 className="mt-3 font-serif text-4xl font-black md:text-5xl">
-            One taste and you&apos;ll be hooked
+            Proper cod and chips by the sea
           </h2>
           <p className="mt-5 leading-8 text-zinc-300">
             We cook in the traditional chip-shop style, serving food hot and
@@ -1004,7 +1055,7 @@ function SisterShopSection() {
           <div className="relative min-h-[320px]">
             <Image
               src="/images/stonehouses-shop-front.jpg"
-              alt="Pier Vista Fish and Chips on Redcar seafront"
+              alt="Stonehouse’s Fish and Chips shop front in Lingdale"
               fill
               className="object-cover"
             />
