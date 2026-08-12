@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ExternalLink, Mail, Star } from "lucide-react";
+import { ExternalLink, Mail, MapPin, Star } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -8,6 +8,8 @@ const siteUrl = "https://www.fishandchipsredcar.co.uk";
 const pageUrl = `${siteUrl}/menu`;
 const facebookUrl = "https://www.facebook.com/piervista";
 const email = "info@fishandchipsredcar.co.uk";
+const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Pier%20Vista%20Fish%20%26%20Chips%2C%20Redcar%20TS10%203AA";
+const seafrontGuideUrl = "/fish-and-chips-redcar-seafront";
 
 type MenuItem = {
   name: string;
@@ -80,16 +82,16 @@ const menuSections: { title: string; intro: string; items: MenuItem[] }[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "Pier Vista Menu | Fish and Chips Redcar Seafront Prices",
+  title: "Pier Vista Menu | Fish & Chips, Kids Meals & Prices in Redcar",
   description:
-    "View the Pier Vista Fish & Chips menu. Traditional fish and chips, chip-shop classics, kids meals, sides, sauces and pensioners specials on Redcar seafront.",
+    "View the Pier Vista Fish & Chips menu in Redcar. Cod and chips, kids meals, pensioners specials, sides, sauces and takeaway food on Redcar seafront opposite Redcar Beacon.",
   alternates: {
     canonical: pageUrl,
   },
   openGraph: {
-    title: "Pier Vista Fish & Chips Menu | Redcar Seafront",
+    title: "Pier Vista Menu | Fish & Chips Redcar Seafront",
     description:
-      "Traditional fish and chips, kids meals, sides and specials on Redcar seafront.",
+      "Fish and chips, kids meals, pensioners specials, sides and sauces from Pier Vista on Redcar seafront opposite Redcar Beacon.",
     url: pageUrl,
     siteName: "Pier Vista Fish & Chips",
     images: [
@@ -105,27 +107,112 @@ export const metadata: Metadata = {
   },
 };
 
-const menuSchema = {
+const getFirstPrice = (price: string) => {
+  const match = price.match(/£?([0-9]+(?:\.[0-9]{1,2})?)/);
+  return match?.[1];
+};
+
+const faqItems = [
+  {
+    question: "Where is Pier Vista Fish & Chips?",
+    answer:
+      "Pier Vista Fish & Chips is on Redcar seafront, directly opposite Redcar Beacon in TS10 3AA.",
+  },
+  {
+    question: "Do you sell kids meals?",
+    answer:
+      "Yes. Pier Vista offers kids meals including a Kids Box Meal and Kids Fish & Chips with chips and a drink.",
+  },
+  {
+    question: "Do opening times change?",
+    answer:
+      "Yes. Pier Vista is a seasonal seafront fish and chip shop, so opening times can change with weather, holidays and visitor demand. Check Facebook before travelling.",
+  },
+  {
+    question: "Is Pier Vista near Redcar Beacon?",
+    answer:
+      "Yes. Pier Vista is directly opposite Redcar Beacon, close to the promenade, beach, arcades and Majuba area.",
+  },
+];
+
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Menu",
-  "@id": `${pageUrl}#menu`,
-  name: "Pier Vista Fish & Chips Menu",
-  url: pageUrl,
-  hasMenuSection: menuSections.map((section) => ({
-    "@type": "MenuSection",
-    name: section.title,
-    description: section.intro,
-    hasMenuItem: section.items.map((item) => ({
-      "@type": "MenuItem",
-      name: item.name,
-      description: item.note || item.name,
-      offers: {
-        "@type": "Offer",
-        priceCurrency: "GBP",
-        price: item.price.replace("£", ""),
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Menu",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "Menu",
+      "@id": `${pageUrl}#menu`,
+      name: "Pier Vista Fish & Chips Menu in Redcar",
+      url: pageUrl,
+      inLanguage: "en-GB",
+      provider: {
+        "@type": "Restaurant",
+        "@id": `${siteUrl}/#restaurant`,
+        name: "Pier Vista Fish & Chips",
+        url: siteUrl,
+        hasMap: mapsUrl,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Redcar Seafront",
+          addressLocality: "Redcar",
+          postalCode: "TS10 3AA",
+          addressCountry: "GB",
+        },
+        servesCuisine: ["Fish and chips", "British", "Seafood"],
       },
-    })),
-  })),
+      hasMenuSection: menuSections.map((section) => ({
+        "@type": "MenuSection",
+        name: section.title,
+        description: section.intro,
+        hasMenuItem: section.items.map((item) => {
+          const price = getFirstPrice(item.price);
+
+          return {
+            "@type": "MenuItem",
+            name: item.name,
+            description: item.note || item.name,
+            ...(price
+              ? {
+                  offers: {
+                    "@type": "Offer",
+                    priceCurrency: "GBP",
+                    price,
+                  },
+                }
+              : {}),
+          };
+        }),
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: faqItems.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
 };
 
 export default function MenuPage() {
@@ -134,7 +221,7 @@ export default function MenuPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(menuSchema),
+          __html: JSON.stringify(structuredData),
         }}
       />
 
@@ -148,24 +235,32 @@ export default function MenuPage() {
           <div>
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.26em] text-amber-200">
               <Star className="h-4 w-4" />
-              Redcar Seafront Menu
+              Pier Vista Redcar Menu
             </p>
 
             <h1 className="max-w-4xl font-serif text-5xl font-black leading-[0.95] tracking-tight md:text-7xl">
-              Pier Vista Fish & Chips Menu
+              Pier Vista Fish & Chips Menu in Redcar
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300 md:text-xl">
-              Traditional fish and chips, chip-shop classics, kids meals, sides,
-              sauces and specials from Pier Vista on Redcar seafront.
+              View our fish and chips menu on Redcar seafront, including cod and chips, kids meals, pensioners specials, sides, sauces and takeaway favourites opposite Redcar Beacon.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="/fish-and-chips-redcar-seafront"
+                href={seafrontGuideUrl}
                 className="rounded-2xl bg-amber-400 px-6 py-3 font-black text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
               >
-                Seafront Guide
+                Plan Your Visit
+              </a>
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-2xl border border-amber-400/30 bg-amber-400/10 px-6 py-3 font-black text-amber-200 transition hover:bg-amber-400/20"
+              >
+                Get Directions
+                <MapPin className="h-4 w-4" />
               </a>
               <a
                 href={facebookUrl}
@@ -184,7 +279,7 @@ export default function MenuPage() {
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-3 shadow-2xl">
               <Image
                 src="/images/fish-boxes.jpg"
-                alt="Pier Vista fish and chips menu food"
+                alt="Cod and chips from Pier Vista Fish & Chips on Redcar seafront"
                 width={1200}
                 height={900}
                 className="aspect-[4/3] rounded-[1.5rem] object-cover"
@@ -196,6 +291,21 @@ export default function MenuPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-8">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+            Fish & Chips Redcar Prices
+          </p>
+          <h2 className="mt-3 font-serif text-4xl font-black md:text-5xl">
+            Fish and chips, kids meals, sides and specials
+          </h2>
+          <p className="mt-4 leading-7 text-zinc-300">
+            Choose from freshly cooked cod and chips, chip-shop classics, kids
+            meals, pensioners specials, sauces and drinks. Pier Vista is on
+            Redcar seafront opposite Redcar Beacon, with takeaway and seating
+            inside available.
+          </p>
+        </div>
+
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {menuSections.map((section) => (
             <div
@@ -241,8 +351,9 @@ export default function MenuPage() {
             Opening times vary seasonally
           </h2>
           <p className="mx-auto mt-4 max-w-2xl leading-7 text-zinc-300">
-            Pier Vista is a seasonal seafront business. Please check Facebook
-            for the latest opening updates before travelling.
+            Pier Vista is a seasonal seafront business, so opening times can
+            change with weather, school holidays and visitor demand. Please
+            check Facebook for today's opening update before travelling.
           </p>
 
           <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -262,6 +373,63 @@ export default function MenuPage() {
               Email Us
               <Mail className="h-4 w-4" />
             </a>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_0.9fr]">
+          <div className="rounded-[2rem] border border-amber-400/20 bg-zinc-950 p-8 shadow-2xl">
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+              Near Redcar Beacon
+            </p>
+            <h2 className="mt-4 font-serif text-3xl font-black md:text-4xl">
+              Fish and chips on Redcar seafront
+            </h2>
+            <div className="mt-5 space-y-4 leading-8 text-zinc-300">
+              <p>
+                Pier Vista is directly opposite Redcar Beacon, close to the
+                promenade, Majuba Beach, arcades and Redcar town centre. It is a
+                simple stop for fish and chips before or after a walk along the
+                seafront.
+              </p>
+              <p>
+                For the latest opening times, seasonal updates and photos, check
+                our Facebook page before travelling.
+              </p>
+            </div>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-3 font-black text-black transition hover:bg-amber-300"
+              >
+                Get Directions
+                <MapPin className="h-4 w-4" />
+              </a>
+              <a
+                href={seafrontGuideUrl}
+                className="inline-flex items-center gap-2 rounded-2xl border border-white/20 px-6 py-3 font-black text-white transition hover:bg-white/10"
+              >
+                Read Seafront Guide
+              </a>
+            </div>
+          </div>
+
+          <div id="faq" className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-2xl">
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+              Menu Questions
+            </p>
+            <h2 className="mt-4 font-serif text-3xl font-black md:text-4xl">
+              Quick answers before visiting
+            </h2>
+            <div className="mt-6 space-y-5">
+              {faqItems.map((faq) => (
+                <div key={faq.question} className="border-b border-white/10 pb-5 last:border-b-0 last:pb-0">
+                  <h3 className="font-bold text-white">{faq.question}</h3>
+                  <p className="mt-2 leading-7 text-zinc-400">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
