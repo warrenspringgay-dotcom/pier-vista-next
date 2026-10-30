@@ -37,9 +37,7 @@ const menuSections: { title: string; intro: string; items: MenuItem[] }[] = [
       { name: "Sausage", price: "£1.80 / £2.20" },
       { name: "Beef Burger", price: "£2.00" },
       { name: "Fish Cake", price: "£2.60" },
-      { name: "Cheesy", price: "£2.60" },
       { name: "Spam Fritter", price: "£1.70" },
-      { name: "Pineapple Ring", price: "80p" },
       { name: "Ocean Sticks (4)", price: "£1.50" },
       { name: "Chicken Nuggets (6)", price: "£2.80" },
       { name: "Mozzarella Dippers & Dip", price: "£2.50" },
@@ -69,7 +67,7 @@ const menuSections: { title: string; intro: string; items: MenuItem[] }[] = [
       {
         name: "Kids Box Meal",
         price: "£5.50",
-        note: "Sausage, cheesy spam, chicken nuggets or fishcake with chips & drink",
+        note: "Sausage, spam, chicken nuggets or fishcake with chips & drink",
       },
       { name: "Kids Fish & Chips", price: "£6.50" },
       {
